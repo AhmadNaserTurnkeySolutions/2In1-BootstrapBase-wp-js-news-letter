@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <title>AhmadNaser.com - Sample Demo</title>
+<!--
+Short code for pages and posts Use the below short code to add Email Subscription Box in the posts and pages.
+
+Short Code: [email-newsletter-plugin]
+
+PHP code Use the below PHP code to Email Subscription Box in your template file.
+
+<?php eemail_show(); ?>
+
+
+JS CODE :subscription_loader()
+
+
+
+	installation :)
+1-find the email-newsletter.zip and install it to wordpress
+2-as php ( shortcode or inline-code)
+3-use the subscription_loader() by modifying the message (by default its arabic )
+-incase you want change the button u can change the image in css and the source image file or event just use the script only by
+
+-eemail_txt_Button (button click for subscribe the email as new subscriber with validation )
+-eemail_txt_email (valid email text field)
+-widget_url_ans   (the plugin widget folder user for validating the submition button request)
+-eemail_msg  ( "#id=eemail_msg" the response back label from the server about (isexist-failed-success... )
+-you have to include the plugin js that contain the scripts for validation and submition ((wp-content/plugins/email-newsletter/widget/widget.js))
+-you ready to go ;)
+
+ (By AhmadNaser)
+-->
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+function subscription_loader(){
+var widget_url_ans='http://www.example.com/wp-content/plugins/email-newsletter/widget';
+var msg_ans='اشتركوا معنا واستقبلوا كل ما هو جديد عبر البريد الالكتروني';
+var holder_ans='ادخل بريدك الالكتروني';
+var eemail_txt_email= document.getElementById("eemail_txt_email");
+var eemail_txt_Button= document.getElementById("eemail_txt_Button");
+
+
+   document.getElementById("msg_ans").innerHTML=msg_ans;
+   eemail_txt_Button.onclick=function(){return eemail_submit_ajax(widget_url_ans)};
+
+   eemail_txt_email.placeholder=holder_ans;
+   eemail_txt_email.onkeypress=function(){if(event.keyCode==13) eemail_submit_ajax(widget_url_ans)};
+   eemail_txt_email.onblur=function(){if(this.value=='') this.value='';};
+   eemail_txt_email.onfocus=function(){if(this.value=='Enter email') this.value='';};
+}
+</script> 
+
+
+
+
+<style>
+.sider-big-subscribe {
+background: none repeat scroll 0 0 #E6E7E8;
+height: 122px;
+width: 340px;
+text-align: left;
+}
+
+
+div.registration_box {
+background-color: #fff;
+border-radius: 5px;
+border: solid 1px #C3BBCA;
+position: relative;
+}
+
+div.registration_box div.free {
+position: absolute;
+top: 0;
+right: 0;
+width: 74px;
+height: 58px;
+background: url(./no-bootstrap/img/free-1.png) no-repeat;
+}
+
+
+div.registration_box div.content {
+width: 310px;
+background: #CD0100;
+margin: 2px auto;
+border-radius: 5px;
+padding: 4px 12px 10px 12px;
+}
+
+div.registration_box div.content span {
+display: block;
+margin: 0px 41px 10px 0;
+font-size: 22px;
+color: #fff;
+text-align: right;
+}
+
+.signup_bluebtn {
+float: left;
+width: 122px;
+height: 40px;
+background: url(./no-bootstrap/img/buttons.png) no-repeat -122px -169px;
+}
+input.data_field_small {
+background: url(./no-bootstrap/img/data_field_small.png) no-repeat;
+width: 138px;
+height: 30px;
+border: none;
+padding: 5px 10px;
+line-height: 30px;
+font-size: 16px;
+outline: none;
+}
+
+.signup_bluebtn:hover {
+background-position: 0 -169px;
+}
+</style>
+
+
+  	  <script type="text/javascript" language="javascript" charset="utf-8" src="./no-bootstrap/js/widget.js"></script>
+	  <!--Example Of Installed plugin webiste-->
+  	  <!--<script type="text/javascript" language="javascript" charset="utf-8" src="http://www.example.com/wp-content/plugins/email-newsletter/widget/widget.js"></script>-->
+	  
+</head>
+<body onload="subscription_loader()">
+
+
+
+
+
+
+
+<div class="sider-big-subscribe">
+<div class="registration_box" style="cursor: pointer;">
+    <div class="free"></div>
+	  <div class="eemail_msg">
+    <span id="eemail_msg"></span>
+  </div>
+    <div class="content">
+        <span id='msg_ans'></span>
+           <a class="signup_bluebtn eemail_textbox_button" name="eemail_txt_Button" id="eemail_txt_Button"  value="" type="button"></a>
+      
+		    <input class="data_field_small eemail_textbox_class" name="eemail_txt_email" id="eemail_txt_email"   maxlength="150" type="text" rel="Email" />
+    </div>
+</div>
+</div><!--sider-big-subscribe-->
+
+
+
+
+
+
+
+</body>
+</html>
